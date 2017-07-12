@@ -72,7 +72,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $profiles = Profile::get(['id', 'name']);
+        return view('userEdit', ['user' => User::find($id), 'profiles' => $profiles]);
     }
 
     /**
@@ -84,7 +85,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'profile_id' => 'required',
+        ]);
+        $user = User::find($id);
+        $user->update($request->all());
+        return redirect('users')->with([
+            'msg' => 'Usuario Actualizado',
+            'msgType' => 'success'
+        ]);
     }
 
     /**
@@ -95,6 +106,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('users')->with([
+            'msg' => 'Usuario Eliminado',
+            'msgType' => 'success'
+        ]);
     }
 }
