@@ -21,7 +21,7 @@
     
     ya con esto configuramos la aplicación de Laravel con Mailtrap.
     
-    ##Cómo personalizar el correo de recuperación de contraseñas en Laravel 5.3 y 5.4
+    ## Cómo personalizar el correo de recuperación de contraseñas en Laravel 5.3 y 5.4
     
     Laravel trae por defecto un sistema de autenticación de usuarios que puedes agregar a tu aplicación con el  comando
     ``` php artisan make:auth ```.  Este sistema incluye la funcionalidad para la recuperación de contraseña de un usuario, que envía un email con el mensaje y el enlace para que el usuario pueda recuperarla, sin embargo, este correo es genérico y en inglés, por lo que si tu aplicación está en español o quieres un mensaje más descriptivo necesitarás personalizar esta funcionalidad.  Con este tutorial aprenderás cómo crear un mensaje para el correo de recuperación de contraseñas adaptado al contexto de tu aplicación:
@@ -30,7 +30,7 @@
     
     ![](https://github.com/Alver23/ecom/blob/master/images/password-reset.png "Password Reset")
     
-    ##Sobrescribe el envío del email
+    ## Sobrescribe el envío del email
     
     Lo primero que debes saber es que el email para recuperar la contraseña se envía como una notificación por medio del sistema de notificaciones de Laravel.  Esto está configurado a través del trait *Illuminate\Auth\Passwords\CanResetPassword en el* modelo User, el cual contiene dos métodos:
     * **getEmailForPasswordReset** que recupera el email del usuario a donde se enviará la notificación.  Necesitarás modificar este método si el atributo de tu modelo User donde se encuentra la dirección de correo del usuario no se llama email.
@@ -49,7 +49,7 @@
 	 }
      ```
     
-	##Crea la nueva notificación
+	## Crea la nueva notificación
 	
 	En Laravel, una notificación está representada por una clase que se encuentra en **App\Notifications** que sirven para notificar al usuario acerca de algo que ocurre en la aplicación, en nuestro caso, notificar al usuario por email de la solicitud de recuperación de contraseña. Para crearla ejecutamos:
 	```	
@@ -78,7 +78,7 @@
     }
     ```
     
-    #Personaliza la notificación vía Mail para Laravel 5.4
+    ## Personaliza la notificación vía Mail para Laravel 5.4
     
     En Laravel 5.4 tu método toMail puede usar los métodos disponibles como subject, greeting, line, action, salutation para escribir el mensaje de la siguiente manera:
     
