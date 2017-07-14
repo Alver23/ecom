@@ -28,7 +28,7 @@
 	vagrant reload --provision
 	```
 * Comprobamos que podamos acceder a dicho host configurado, ingresando a [http://ecom-project.app](http://ecom-project.app) y nos debe aparecer algo así:
-	![](https://github.com/Alver23/ecom/images/running.png "Servidor Corriendo")
+	![](https://github.com/Alver23/ecom/blob/master/images/running.png "Servidor Corriendo")
 
 * Configuramos el archivo .env con el driver a utilizar, base de datos y puerto, ejemplo:
 	```
