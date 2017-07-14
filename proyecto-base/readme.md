@@ -71,7 +71,70 @@
 	```
 	php artisan make:seeder UserTableSeeder
 	```
+	el seeder nos debe quedar de está forma:
+	```php
+	<?php
+    
+    use Illuminate\Database\Seeder;
+    use App\User;
+    class UsersTableSeeder extends Seeder
+    {
+        /**
+         * Run the database seeds.
+         *
+         * @return void
+         */
+        public function run()
+        {
+            factory(User::class)->create([
+                'name' => 'su nombre',
+                'email' => 'su email',
+                'password' => bcrypt('su password'),
+            ]);
+        }
+    }
+
+	```
 * Ejecutamos las migraciones y los datos de prueba con el siguiente comando:
 	```
 	php artisan migrate --seed
 	```
+	
+	Si al ejecutar las migraciones, nos genera el siguiente error:
+	
+	![](https://github.com/Alver23/ecom/blob/master/images/migration-error.png)
+	
+	Agregamos la siguiente linea de codigo en el archivo app/Providers/AppServiceProvider.php
+	```php
+	<?php
+    
+    namespace App\Providers;
+    
+    use Illuminate\Support\Facades\Schema;
+    use Illuminate\Support\ServiceProvider;
+    
+    class AppServiceProvider extends ServiceProvider
+    {
+        /**
+         * Bootstrap any application services.
+         *
+         * @return void
+         */
+        public function boot()
+        {
+            Schema::defaultStringLength(191);
+        }
+    
+        /**
+         * Register any application services.
+         *
+         * @return void
+         */
+        public function register()
+        {
+            //
+        }
+    }
+	```
+	
+	Despues de realizar esté paso, ingresamos a la base de datos y eliminamos las tablas manualmente y volvemos a ejecutar el comando ``` php artisan migrate --seed ```
