@@ -52,11 +52,11 @@
                                 <label for="profile_id" class="col-md-4 control-label">Perfil:</label>
 
                                 <div class="col-md-6">
-                                    <select name="profile_id" id="profile_id" class="form-control">
-                                        @foreach($profiles as $profile)
-                                            <option value="{{ $profile->id }}">{{ $profile->name }}</option>
-                                        @endforeach
-                                    </select>
+    <select name="profile_id" id="profile_id" class="form-control">
+        @foreach($profiles as $profile)
+            <option value="{{ $profile->id }}">{{ $profile->name }}</option>
+        @endforeach
+    </select>
 
                                     @if ($errors->has('profile_id'))
                                         <span class="help-block">

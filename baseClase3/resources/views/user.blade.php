@@ -47,7 +47,7 @@
                                         {{ $user->email }}
                                     </td>
                                     <td>
-                                        {{ $user->profile->name }}
+                                        {{ $user->profile->name ?? null }}
                                     </td>
                                     <td>
                                         <a href="{{ route('users.edit', ['users' => $user->id]) }}" class="btn btn-primary">

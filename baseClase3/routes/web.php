@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'men';
 });
 
 Route::resource('profiles', 'ProfileController');

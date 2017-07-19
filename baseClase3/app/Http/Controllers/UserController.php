@@ -38,6 +38,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         //dd($request->input());
         $this->validate($request, [
             'name' => 'required',
@@ -46,6 +47,7 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
+        dd($request->all());
         User::create($request->all());
         return redirect('users')->with([
             'msg' => 'Usuario Creado',

@@ -10,7 +10,6 @@ class ProfileController extends Controller
 
     public function index(Request $request)
     {
-        //dd($request);
         return view('profileTable', [
             'profiles' => Profile::get(),
             'msg' => $request->input('msg') ?? null,
