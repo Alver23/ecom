@@ -7,12 +7,12 @@
                     <th>Nombre</th>
                     <th>Nombre a mostrar</th>
                     <th>Descripcion</th>
-                    <th>Usuario creador</th>
+                    <!--<th>Usuario creador</th>
                     <th>Usuario modificador</th>
                     <th>Fecha de creacion</th>
                     <th>Fecha de modificacion</th>
                     <th>Fecha de eliminacion</th>
-                    <th>Accion</th>
+                    <th>Accion</th>-->
                 </tr>
                 </thead>
                 <tbody></tbody>

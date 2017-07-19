@@ -1,4 +1,4 @@
-<div class="modal fade" id="formPermissionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="formPermissionModal">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-light-blue-active">
@@ -8,7 +8,8 @@
             </div>
             <form action="{{ route('permisos.store') }}" method="post" id="formPermission">
                 {{ method_field('POST') }}
-                {{ Form::hidden('permission_id', null) }}
+                {{ csrf_field() }}
+                <input type="hidden" name="permission_id">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -20,12 +21,16 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="form-group">
-                                <label for="permission_name">Nombre</label>
+                                <label for="permission_name"><span class="label label-danger">*</span>Nombre</label>
                                 <input type="text" name="name" id="permission_name" class="form-control" required="true" maxlength="191">
                             </div>
                             <div class="form-group">
+                                <label for="display_name"><strong class="label-danger">*</strong>Nombre a mostrar</label>
+                                <input type="text" name="display_name" id="display_name" class="form-control" required="true" maxlength="191">
+                            </div>
+                            <div class="form-group">
                                 <label for="permission_description">Descripcion</label>
-                                <textarea name="description" id="" cols="30" rows="3" maxlength="191"></textarea>
+                                <textarea name="description" id="" cols="30" rows="3" maxlength="191" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>
@@ -37,7 +42,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="fa fa-save"></i> Guardar
                     </button>
-                    <button type="submit" class="btn btn-primary closePermissionModal">
+                    <button type="button" class="btn btn-default closePermissionModal">
                         Cerrar
                     </button>
                 </div>

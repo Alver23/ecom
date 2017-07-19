@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\PermissionDataTable;
 use App\Models\Permission;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PermissionController extends Controller
 {
@@ -35,7 +37,14 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $permission = Permission::create($request->all());
+        return response()->json([
+            'code' => Response::HTTP_CREATED,
+            'type' => 'success',
+            'message' => 'Registro creado satisfactoriamente',
+            'description' => '',
+            'data' => $permission->toArray()
+        ], Response::HTTP_CREATED);
     }
 
     /**
@@ -81,5 +90,20 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         //
+    }
+
+    /**
+     *
+     * Query para mostrar los resultados en un dataTable
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Controllers\PermissionDataTable $dataTable
+     * @return mixed
+     */
+    public function list(Request $request, PermissionDataTable $dataTable)
+    {
+        if ($request->ajax()) {
+            return $dataTable->ajax();
+        }
+        abort(Response::HTTP_NOT_FOUND);
     }
 }

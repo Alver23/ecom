@@ -19,4 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('permisos', 'PermissionController');
+/**
+ * Rutas para el modulo de permisos
+ */
+Route::get('permissions/list', [
+    'uses' => 'PermissionController@list',
+]);
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('permisos', 'PermissionController');
+});
