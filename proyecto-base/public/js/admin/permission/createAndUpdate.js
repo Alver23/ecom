@@ -2,10 +2,10 @@
  * Created by agrisales on 18/07/17.
  */
 
-let path = window.location.href
+var path = window.location.href
 
 $(function () {
-  let formPermission = $('#formPermission')
+  var formPermission = $('#formPermission')
 
   formPermission.validate({
     rules: {
@@ -18,8 +18,8 @@ $(function () {
       $(element).closest('.form-group').removeClass('has-error') // set error class to the control group
     },
     submitHandler: function (form) {
-      let method = formPermission.find('input[name="_method"]').val()
-      let url = path
+      var method = formPermission.find('input[name="_method"]').val()
+      var url = path
       if (method === 'PUT') {
         let permissionId = formPermission.find('input[name="permission_id"]').val()
         url = path + '/' + permissionId
@@ -44,8 +44,8 @@ $(function () {
             var errors = context.responseText || {}
             errors = JSON.parse(errors)
             $.each(errors, function (i, val) {
-              let input = formPermission.find(`input[name="${i}"]`)
-              let parent = $(input).closest('.form-group')
+              var input = formPermission.find(`input[name="${i}"]`)
+              var parent = $(input).closest('.form-group')
               parent.addClass('has-error')
               if (parent.find('label').length < 2) {
                 parent.append("<label id="+ input.attr('id') +"-error class='error'></label>")

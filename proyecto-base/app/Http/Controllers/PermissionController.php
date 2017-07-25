@@ -76,9 +76,20 @@ class PermissionController extends Controller
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permission $permission)
+    public function update(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $permission = Permission::find($id);
+            $permission->update($request->all());
+            return response()->json([
+                'code' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Registro Actualizado',
+                'description' => '',
+                'data' => $permission->toArray(),
+            ], Response::HTTP_OK);
+        }
+        abort(404);
     }
 
     /**
@@ -87,9 +98,20 @@ class PermissionController extends Controller
      * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permission $permission)
+    public function destroy(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $permission = Permission::find($id);
+            $permission->delete();
+            return response()->json([
+                'code' => Response::HTTP_OK,
+                'type' => 'success',
+                'message' => 'Registro Eliminado',
+                'description' => '',
+                'data' => []
+            ], Response::HTTP_OK);
+        }
+        abort(404);
     }
 
     /**

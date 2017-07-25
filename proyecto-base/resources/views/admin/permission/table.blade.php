@@ -11,8 +11,8 @@
                     <th>Usuario modificador</th>
                     <th>Fecha de creacion</th>
                     <th>Fecha de modificacion</th>
-                    <th>Fecha de eliminacion</th>
-                    <th>Accion</th>-->
+                    <th>Fecha de eliminacion</th>-->
+                    <th>Accion</th>
                 </tr>
                 </thead>
                 <tbody></tbody>

@@ -18,7 +18,13 @@ class PermissionDataTable
     {
         $permissions = $this->query();
 
-        return DataTables::of($permissions)->make(true);
+        return DataTables::of($permissions)
+            ->addColumn('action', function ($permission) {
+                $button = "<button class='btn btn-primary editPermission' data-id=$permission->id>Editar</button> ";
+                $button .= " <button class='btn btn-danger deletePermission' data-id=$permission->id>Eliminar</button>";
+                return $button;
+            })
+            ->make(true);
     }
 
     public function query()

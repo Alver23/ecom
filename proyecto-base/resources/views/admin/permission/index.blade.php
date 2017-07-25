@@ -15,4 +15,6 @@
     <script src="{{ asset('js/admin/permission/index.js') }}"></script>
     <script src="{{ asset('js/admin/permission/dataTable.js') }}"></script>
     <script src="{{ asset('js/admin/permission/createAndUpdate.js') }}"></script>
+    <script src="{{ asset('js/admin/permission/delete.js') }}"></script>
 @endpush
+
