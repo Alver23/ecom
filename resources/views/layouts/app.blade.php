@@ -13,11 +13,26 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
 
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token()
         ]) !!}
+    </script>
+
+    <script>
+      //See https://laracasts.com/discuss/channels/vue/use-trans-in-vuejs
+      window.trans = @php
+            // copy all translations from /resources/lang/CURRENT_LOCALE/* to global JS variable
+            $lang_files = File::files(resource_path() . '/lang/' . App::getLocale());
+            $trans = [];
+            foreach ($lang_files as $f) {
+                $filename = pathinfo($f)['filename'];
+                $trans[$filename] = trans($filename);
+            }
+            echo json_encode($trans);
+        @endphp
     </script>
 </head>
 <body>
