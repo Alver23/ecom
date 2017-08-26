@@ -29,6 +29,11 @@ abstract class EloquentRepository
         return $this->model->find($id);
     }
 
+    public function findManyBy(string $key, $value, array $attributes = ['*'], array $with = [])
+    {
+        return $this->model->with($with)->where($key, $value)->get($attributes);
+    }
+
     public function create(array $data)
     {
         $model = $this->model->fill($data);
